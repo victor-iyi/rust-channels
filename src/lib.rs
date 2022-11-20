@@ -38,6 +38,6 @@ pub use sender::Sender;
 /// is disconnected while trying to [`recv`], the [`recv`] method will return a
 /// [`RecvError`].
 pub fn channel<T>() -> (Sender<T>, Receiver<T>) {
-    let inner = Arc::new(Inner::new());
-    (Sender::new(inner.clone()), Receiver::new(inner.clone()))
+  let inner = Arc::new(Inner::new());
+  (Sender::new(inner.clone()), Receiver::new(inner.clone()))
 }

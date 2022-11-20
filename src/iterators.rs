@@ -29,57 +29,57 @@ use crate::Receiver;
 /// ```
 #[derive(Debug)]
 pub struct Iter<'a, T: 'a> {
-    rx: &'a Receiver<T>,
+  rx: &'a Receiver<T>,
 }
 
 impl<'a, T> Iterator for Iter<'a, T> {
-    type Item = T;
+  type Item = T;
 
-    fn next(&mut self) -> Option<T> {
-        self.rx.recv().ok()
-    }
+  fn next(&mut self) -> Option<T> {
+    self.rx.recv().ok()
+  }
 }
 
 #[derive(Debug)]
 pub struct TryIter<'a, T: 'a> {
-    rx: &'a Receiver<T>,
+  rx: &'a Receiver<T>,
 }
 
 impl<'a, T> Iterator for TryIter<'a, T> {
-    type Item = T;
+  type Item = T;
 
-    fn next(&mut self) -> Option<T> {
-        self.rx.try_recv().ok()
-    }
+  fn next(&mut self) -> Option<T> {
+    self.rx.try_recv().ok()
+  }
 }
 
 impl<'a, T> IntoIterator for &'a Receiver<T> {
-    type Item = T;
-    type IntoIter = Iter<'a, T>;
+  type Item = T;
+  type IntoIter = Iter<'a, T>;
 
-    fn into_iter(self) -> Iter<'a, T> {
-        self.iter()
-    }
+  fn into_iter(self) -> Iter<'a, T> {
+    self.iter()
+  }
 }
 
 impl<T> Iterator for IntoIter<T> {
-    type Item = T;
+  type Item = T;
 
-    fn next(&mut self) -> Option<T> {
-        self.rx.recv().ok()
-    }
+  fn next(&mut self) -> Option<T> {
+    self.rx.recv().ok()
+  }
 }
 
 impl<T> IntoIterator for Receiver<T> {
-    type Item = T;
-    type IntoIter = IntoIter<T>;
+  type Item = T;
+  type IntoIter = IntoIter<T>;
 
-    fn into_iter(self) -> IntoIter<T> {
-        IntoIter { rx: self }
-    }
+  fn into_iter(self) -> IntoIter<T> {
+    IntoIter { rx: self }
+  }
 }
 
 #[derive(Debug)]
 pub struct IntoIter<T> {
-    rx: Receiver<T>,
+  rx: Receiver<T>,
 }
