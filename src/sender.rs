@@ -16,7 +16,7 @@ use crate::{
 /// # Example
 ///
 /// ```rust,ignore
-/// use channel::channel;
+/// use channels::channel;
 ///
 /// let (mut sender, mut receiver) = channel();
 /// let mut sender2 = sender.clone();
@@ -36,6 +36,7 @@ use crate::{
 ///
 /// assert_eq!(msg + msg2, 3);
 /// ```
+#[derive(Clone)]
 pub struct Sender<T> {
   inner: Arc<Inner<T>>,
 }
@@ -76,7 +77,7 @@ impl<T> Sender<T> {
   /// # Example
   ///
   /// ```rust,no_run
-  /// use channel::channel;
+  /// use channels::channel;
   ///
   /// let (mut tx, mut rx) = channel();
   ///

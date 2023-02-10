@@ -55,7 +55,7 @@ impl<T> Receiver<T> {
   /// # Examples
   ///
   /// ```rust
-  /// use channel::{Receiver, channel};
+  /// use channels::{Receiver, channel};
   ///
   /// let (_, receiver): (_, Receiver<i32>) = channel();
   ///
@@ -89,9 +89,9 @@ impl<T> Receiver<T> {
   ///
   /// ```rust
   /// use std::thread;
-  /// use channel::channel;
+  /// use channels::channel;
   ///
-  /// let (mut send, mut recv) = channel();
+  /// let (mut send, recv) = channel();
   /// let handle = thread::spawn(move || {
   ///   send.send(1u8).unwrap();
   /// });
@@ -155,9 +155,9 @@ impl<T> Receiver<T> {
   /// ```rust,no_run
   /// use std::{thread, time::Duration};
   ///
-  /// use channel::channel;
+  /// use channels::channel;
   ///
-  /// let (sender, receiver) = channel();
+  /// let (mut sender, receiver) = channel();
   ///
   /// // Nothing is in the buffer yet.
   /// assert!(receiver.try_iter().next().is_none());

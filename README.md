@@ -1,5 +1,7 @@
 # Rust Channel
 
+[![CI](https://github.com/victor-iyi/rust-channels/actions/workflows/CI.yml/badge.svg)](https://github.com/victor-iyi/rust-channels/actions/workflows/CI.yml)
+
 Simple implementation of Rust's `mpsc` channel.
 
 ## Contribution
