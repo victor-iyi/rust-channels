@@ -20,6 +20,8 @@ mod receiver;
 mod sender;
 
 use inner::Inner;
+
+// Re-exports.
 pub use receiver::Receiver;
 pub use sender::Sender;
 
