@@ -280,7 +280,10 @@ impl<T> Receiver<T> {
     }
   }
 
-  pub fn recv_deadline(&self, _deadline: Instant) -> Result<T, RecvTimeoutError> {
+  pub fn recv_deadline(
+    &self,
+    _deadline: Instant,
+  ) -> Result<T, RecvTimeoutError> {
     unimplemented!()
   }
 }

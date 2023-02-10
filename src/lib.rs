@@ -39,5 +39,5 @@ pub use sender::Sender;
 /// [`RecvError`].
 pub fn channel<T>() -> (Sender<T>, Receiver<T>) {
   let inner = Arc::new(Inner::new());
-  (Sender::new(inner.clone()), Receiver::new(inner.clone()))
+  (Sender::new(inner.clone()), Receiver::new(inner))
 }
