@@ -29,7 +29,7 @@ use crate::Receiver;
 /// ```
 #[derive(Debug)]
 pub struct Iter<'a, T: 'a> {
-  rx: &'a Receiver<T>,
+  pub(super) rx: &'a Receiver<T>,
 }
 
 impl<'a, T> Iterator for Iter<'a, T> {
@@ -42,7 +42,7 @@ impl<'a, T> Iterator for Iter<'a, T> {
 
 #[derive(Debug)]
 pub struct TryIter<'a, T: 'a> {
-  rx: &'a Receiver<T>,
+  pub(crate) rx: &'a Receiver<T>,
 }
 
 impl<'a, T> Iterator for TryIter<'a, T> {

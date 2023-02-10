@@ -109,7 +109,7 @@ impl<T> Receiver<T> {
       match data {
         Some(d) => return Ok(d),
         None => {
-          stack = self.inner.available.wait(queue).unwrap();
+          queue = self.inner.available.wait(queue).unwrap();
         }
       }
     }
@@ -280,10 +280,7 @@ impl<T> Receiver<T> {
     }
   }
 
-  pub fn recv_deadline(
-    &self,
-    deadline: Instant,
-  ) -> Result<T, RecvTimeoutError> {
+  pub fn recv_deadline(&self, _deadline: Instant) -> Result<T, RecvTimeoutError> {
     unimplemented!()
   }
 }
